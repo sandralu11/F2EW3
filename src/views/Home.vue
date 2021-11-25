@@ -14,7 +14,6 @@
             <i class='bx bx-chevron-right'></i>
         </div>
       </router-link>
-     
       <div class="btn">
           <img src="../assets/nearby.png" alt="">
             <div class="btn-box">
@@ -23,7 +22,9 @@
           </div>
           <i class='bx bx-chevron-right'></i>
       </div>
-     
+      <router-link to="about">
+          鍵盤
+      </router-link>
     </div>
   </div>
 </template>
