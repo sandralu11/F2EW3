@@ -1,35 +1,29 @@
 <template>
     <div class="keyboard">
         <div class="btn-text">
-            <div class="key-text">藍</div>
-            <div class="key-text">紅</div>
-            <div class="key-text">綠</div>
-            <div class="key-text">棕</div>
-            <div class="key-text">橘</div>
-            <div class="key-text">黃</div>
-            <div class="key-text">更多</div>
-            <div class="key-text">幹線</div>
+            <div class="key-text" v-for="item in text" :key="item" @click="clickKey(item)">{{item}}</div>
         </div>
         <div class="btn-num">
-            <div class="key-num">1</div>
-            <div class="key-num">2</div>
-            <div class="key-num">3</div>
-            <div class="key-num">4</div>
-            <div class="key-num">5</div>
-            <div class="key-num">6</div>
-            <div class="key-num">7</div>
-            <div class="key-num">8</div>
-            <div class="key-num">9</div>
-            <div class="key-num">0</div>
-            <div class="key-num">重設</div>
-            <div class="key-num">C</div>
+            <div class="key-num" v-for="item in num" :key="item" @click="clickKey(item)">{{item}}</div>
+            <div class="key-num" @click="clear">重設</div>
+            <div class="key-num" @click="back"><i class='bx bx-arrow-back'></i></div>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-
+    data(){
+        return{
+            text:['藍','紅','綠','棕','橘','黃','-','幹線'],
+            num:['1','2','3','4','5','6','7','8','9','0']
+        }
+    },
+    props: {
+        clickKey:Function,
+        clear:Function,
+        back:Function
+    }
 }
 </script>
 
