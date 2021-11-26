@@ -14,7 +14,6 @@
             <i class='bx bx-chevron-right'></i>
         </div>
       </router-link>
-     
       <div class="btn">
           <img src="../assets/nearby.png" alt="">
             <div class="btn-box">
@@ -23,7 +22,6 @@
           </div>
           <i class='bx bx-chevron-right'></i>
       </div>
-     
     </div>
   </div>
 </template>
@@ -42,22 +40,23 @@ export default {
 
 <style lang="scss" scoped>
 @import '../assets/share.scss';
+@import '../assets/media.scss';
 .home{
   background-image:url("https://source.unsplash.com/random/1440x800/?bus");
   height: 100vh;
   width: 100%;
-  a{
-    
-  }
   .header{
     background: rgba(255, 255, 255, 0.4);
+    text-align: center;
   }
   .btn-group{
-    width: 90%;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
+    @include mobile{
+        width: 90%;
+    }
   }
   .btn{
     background-color: #fff;
