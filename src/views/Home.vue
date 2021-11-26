@@ -14,6 +14,7 @@
             <i class='bx bx-chevron-right'></i>
         </div>
       </router-link>
+      <router-link to="/Map">
       <div class="btn">
           <img src="../assets/nearby.png" alt="">
             <div class="btn-box">
@@ -22,6 +23,7 @@
           </div>
           <i class='bx bx-chevron-right'></i>
       </div>
+      </router-link>
     </div>
   </div>
 </template>
