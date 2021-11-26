@@ -22,6 +22,12 @@
           </div>
           <i class='bx bx-chevron-right'></i>
       </div>
+<<<<<<< HEAD
+=======
+      <router-link to="about">
+          鍵盤
+      </router-link>
+>>>>>>> 84625b5ab82c722152c838bb93ee1f031bcd6678
     </div>
   </div>
 </template>
