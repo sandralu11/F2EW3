@@ -12,7 +12,6 @@
                 <i class='bx bx-search'></i>
                 <input type="search" placeholder="今天要搭哪輛公車呢？" v-model="searchBus" disabled>
             </div>
-            <i class='bx bx-x'></i>
         </div>
         <!-- <div class="container">
             <h2>搜尋公車</h2>
@@ -28,7 +27,7 @@
                 </div>
                 <i class='bx bx-chevron-right'></i>
             </div>
-             <div class="bus-item">
+            <div class="bus-item">
                 <div >
                     <img src="../assets/Vector.png" alt="">
                     <h2>307</h2>
@@ -118,7 +117,7 @@ export default {
         box-shadow:0  1px #aaa;
         .search-box{
         display: inline-block;
-        width: 80%;
+        width: 90%;
         position: relative;
             .bx-search{
                 position: absolute;
@@ -135,17 +134,12 @@ export default {
             }
         }
     }
-    
-    .container{
-        position: relative;
-        text-align: center;
-        margin-top:30%;
-                footer{
+
+    footer{
             position: fixed;
             bottom: 0;
             left: 0;
         }
-    }
     .bus-list{
         margin: 20px;
         .bus-item{

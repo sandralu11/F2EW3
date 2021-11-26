@@ -1,6 +1,32 @@
 <template>
     <div class="card" @click="callback(positon)">
-
+        <div class="bus-top">
+            <div class="bus-num">
+                <i class='bx bx-bus' ></i>
+                <span>307</span>
+            </div>
+        </div>
+        <div class="direction">
+            <div class="active">往捷運石牌站</div>
+            <div>往舊莊</div>
+        </div>
+        <div class="time">3秒更新</div>
+        <div class="station-list">
+            <div class="item">
+                <div>
+                <div class="state">進站中</div>
+                <div class="name">舊裝國小</div>
+                </div>
+                <div class="tag">636-u5</div>
+            </div>
+            <div class="item">
+                <div>
+                <div class="state">進站中</div>
+                <div class="name">舊裝國小</div>
+                </div>
+                <div class="tag">636-u5</div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -13,8 +39,75 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/share.scss';
 .card{
-    
-    
+    background: linear-gradient(180deg, #AEDDD7 52.1%, rgba(174, 221, 215, 0) 100%);
+    height: 100vh;
+    .bus-top{
+        color: #fff;
+        font-size: 24px;
+        padding: 20px;
+        .bus-num{
+            text-align: center;
+        }
+    }
+    .direction{
+        background-color: #fff;
+        border-radius: 50px;
+        display: flex;
+        justify-content: space-around;
+        color:$btn-num-color;
+        padding: 2px;
+        margin: 20px;
+        div{
+            width: 50%;
+            height: 35px;
+            border-radius: 50px;
+            text-align: center;
+            line-height: 35px;
+        }
+        .active{
+            background-color: $blue;
+            color: #fff;
+        }
+    }
+    .time{
+        color: #fff;
+        width: 85%;
+        text-align: right;
+        margin: auto;
+
+    }
+    .item{
+        margin: 5px;
+        padding: 10px;
+        background-color: #fff;
+        border-radius: 50px;
+        display: flex;
+        justify-content: space-between;
+        div{
+            display: inline-block;
+        }
+        .state{
+            background: #FDA728;
+            border: 2px solid #FFE5C0;
+            box-sizing: border-box;
+            border-radius: 14px;
+            padding: 10px;
+            color: #fff;
+        }
+        .name{
+            padding: 0 5px;
+        }
+        .tag{
+            padding:0 10px;
+            font-size: 10px;
+            color: #fff;
+            background-color: $blue;
+            border-radius: 20px;
+            line-height: 40px;
+            
+        }
+    }
 }
 </style>
