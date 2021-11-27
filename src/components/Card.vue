@@ -14,14 +14,21 @@
         <div class="station-list">
             <div class="item">
                 <div>
-                <div class="state">進站中</div>
+                <div class="state no-bus">未發車</div>
                 <div class="name">舊裝國小</div>
                 </div>
                 <div class="tag">636-u5</div>
             </div>
             <div class="item">
                 <div>
-                <div class="state">進站中</div>
+                <div class="state bus-pitting">進站中</div>
+                <div class="name">舊裝國小</div>
+                </div>
+                <div class="tag">636-u5</div>
+            </div>
+            <div class="item">
+                <div>
+                <div class="state count-down">１分鐘</div>
                 <div class="name">舊裝國小</div>
                 </div>
                 <div class="tag">636-u5</div>
@@ -89,12 +96,24 @@ export default {
             display: inline-block;
         }
         .state{
-            background: #FDA728;
-            border: 2px solid #FFE5C0;
             box-sizing: border-box;
             border-radius: 14px;
             padding: 10px;
+        }
+        .no-bus{
+            border: 2px solid #D9D9D9;
+            background: #F3F3F3;
+            color: #9A9A9A;
+        }
+        .bus-pitting{
+            border: 2px solid #FFE5C0;
+            background: #FDA728;
             color: #fff;
+        }
+        .count-down{
+            background: #F8FCFF;
+            color: #18628D;
+            border: 2px solid #18628D;
         }
         .name{
             padding: 0 5px;
