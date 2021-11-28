@@ -13,25 +13,13 @@
                 <input type="search" placeholder="今天要搭哪輛公車呢？" v-model="searchBus" disabled>
             </div>
         </div>
-        <!-- <div class="container">
-            <h2>搜尋公車</h2>
-            <p>輸入公車號碼</p> 
-        </div>             -->
         <div class="bus-list">
             <p>台北</p>
-            <div class="bus-item">
+            <div class="bus-item" v-for="(item,i) in busList" :key="i">
                 <div >
                     <img src="../assets/Vector.png" alt="">
-                    <h2>307</h2>
-                    <p>舊莊 - 捷運石牌站</p>
-                </div>
-                <i class='bx bx-chevron-right'></i>
-            </div>
-            <div class="bus-item">
-                <div >
-                    <img src="../assets/Vector.png" alt="">
-                    <h2>307</h2>
-                    <p>舊莊 - 捷運石牌站</p>
+                    <h2>{{item.RouteName.Zh_tw}}</h2>
+                    <p>{{item.DepartureStopNameZh}}-{{item.DestinationStopNameZh}}</p>
                 </div>
                 <i class='bx bx-chevron-right'></i>
             </div>
@@ -44,20 +32,33 @@
                 />
             </footer>
         </div>
-       
     </div>
 </div>
 </template>
 
 <script>
 import Keyboard from '../components/keyboard.vue'
+import getApi from '../lib/Authorization.js'
 export default {
     components: {
         Keyboard,
     }, 
     data(){
         return{
-        searchBus:""
+            searchBus:"",
+            busList:[]
+        }
+    },
+    mounted(){
+    getApi.getRoute().then(res=>{
+        this.busList=res;
+    })},
+    watch:{
+        searchBus(busName){
+            getApi.getRoute(busName).then(res=>{
+                this.busList=res;
+                console.log(res);
+            })
         }
     },
     methods: {
@@ -80,7 +81,7 @@ export default {
 @import '../assets/media.scss';
 .pc{
     background-image:url("https://source.unsplash.com/random/1440x800/?bus");
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     position: relative;
     .header{
@@ -98,6 +99,7 @@ export default {
     }
 }
 .bus-search{
+    overflow: auto;
     width: 80%;
     height: 70%;
     background-color: $bg-color;
@@ -109,7 +111,8 @@ export default {
     bottom: 0;
     @include mobile{
         width: 100%;
-        height: 100vh;
+        height: calc(100vh-222);
+        margin-top:0 ;
     }
     .head{
         background-color: #fff;
@@ -142,6 +145,7 @@ export default {
         }
     .bus-list{
         margin: 20px;
+        overflow: auto;
         .bus-item{
             box-shadow: 0px 2px 8px rgba(111, 137, 162, 0.2);
             border-radius: 15px;

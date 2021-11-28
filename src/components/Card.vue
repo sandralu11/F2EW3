@@ -1,21 +1,24 @@
 <template>
-    <div class="card" @click="callback(positon)">
+    <div class="card">
         <div class="bus-top">
+            <router-link to="/Search">
+                <i class='bx bx-chevron-left'></i>
+            </router-link>
             <div class="bus-num">
                 <i class='bx bx-bus' ></i>
                 <span>307</span>
             </div>
         </div>
         <div class="direction">
-            <div class="active">往捷運石牌站</div>
-            <div>往舊莊</div>
+            <div @click="direction=true" :class="{ active: direction}">往捷運石牌站</div>
+            <div @click="direction=false" :class="{ active: !direction}">往舊莊</div>
         </div>
-        <div class="time">3秒更新</div>
+        <!-- <div class="time">3秒更新</div> -->
         <div class="station-list">
-            <div class="item">
+            <div class="item" v-for="item in stopList[0].Stops" :key="item.StopUID" >
                 <div>
                 <div class="state no-bus">未發車</div>
-                <div class="name">舊裝國小</div>
+                <div class="name">{{item.StopName.Zh_tw}}</div>
                 </div>
                 <div class="tag">636-u5</div>
             </div>
@@ -38,10 +41,25 @@
 </template>
 
 <script>
+import getApi from '../lib/Authorization.js'
 export default {
-    props:{
-        callback:Function,
-    }
+    data(){
+        return{
+            stopList:[],
+            arrival:[],
+            direction:true,
+        }
+    },
+
+    mounted(){
+    getApi.getSequence().then(res=>{
+        this.stopList=res;
+    })
+    getApi.getArrival().then(res=>{
+        this.arrival=res;
+        console.log(res);
+    })
+    },
 }
 </script>
 
@@ -50,7 +68,13 @@ export default {
 .card{
     background: linear-gradient(180deg, #AEDDD7 52.1%, rgba(174, 221, 215, 0) 100%);
     height: 100vh;
+    position: relative;
+    .bx-chevron-left{
+        position: absolute;
+        color: #fff;
+    }
     .bus-top{
+        
         color: #fff;
         font-size: 24px;
         padding: 20px;
