@@ -15,19 +15,23 @@
         </div>
         <!-- <div class="time">3秒更新</div> -->
         <div class="station-list">
-            <div class="item" v-for="item in stopList[0].Stops" :key="item.StopUID" >
-                <div>
-                <div class="state no-bus">未發車</div>
-                <div class="name">{{item.StopName.Zh_tw}}</div>
+            <div v-if="direction">
+                <div class="item" v-for="item in stopList[0].Stops" :key="item.StopUID" >
+                    <div>
+                    <div class="state no-bus">未發車</div>
+                    <div class="name">{{item.StopName.Zh_tw}}</div>
+                    </div>
+                    <div class="tag">636-u5</div>
                 </div>
-                <div class="tag">636-u5</div>
             </div>
-            <div class="item">
-                <div>
-                <div class="state bus-pitting">進站中</div>
-                <div class="name">舊裝國小</div>
-                </div>
-                <div class="tag">636-u5</div>
+            <div v-else>
+                <div class="item"   v-for="item in stopList[1].Stops" :key="item.StopUID">
+                    <div>
+                    <div class="state bus-pitting">進站中</div>
+                    <div class="name">{{item.StopName.Zh_tw}}</div>
+                    </div>
+                    <div class="tag">636-u5</div>
+            </div>
             </div>
             <div class="item">
                 <div>
@@ -54,10 +58,12 @@ export default {
     mounted(){
     getApi.getSequence().then(res=>{
         this.stopList=res;
-    })
+    }),
     getApi.getArrival().then(res=>{
         this.arrival=res;
-        console.log(res);
+    }),
+    getApi.getRoute().then(res=>{
+        this.busList=res;
     })
     },
 }
@@ -67,14 +73,13 @@ export default {
 @import '../assets/share.scss';
 .card{
     background: linear-gradient(180deg, #AEDDD7 52.1%, rgba(174, 221, 215, 0) 100%);
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
     .bx-chevron-left{
         position: absolute;
         color: #fff;
     }
     .bus-top{
-        
         color: #fff;
         font-size: 24px;
         padding: 20px;
@@ -122,6 +127,7 @@ export default {
         .state{
             box-sizing: border-box;
             border-radius: 14px;
+            font-size: 14px;
             padding: 10px;
         }
         .no-bus{
@@ -141,15 +147,15 @@ export default {
         }
         .name{
             padding: 0 5px;
+            font-size: 14px;
         }
         .tag{
-            padding:0 10px;
-            font-size: 10px;
+            padding:0 8px;
+            font-size: 6px;
             color: #fff;
             background-color: $blue;
             border-radius: 20px;
-            line-height: 40px;
-            
+            line-height: 38px;
         }
     }
 }

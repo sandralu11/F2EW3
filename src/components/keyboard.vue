@@ -52,14 +52,11 @@ export default {
     }
     .key-text{
         background-color: $btn-text-color;
-       
         display: inline-block;
     }
     .key-num{
         background-color: $btn-num-color;
-        
         display: inline-block;
-
     }
 }
 

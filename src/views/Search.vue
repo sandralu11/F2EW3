@@ -1,8 +1,8 @@
 <template>
-<div class="pc">
+<!-- <div class="pc">
     <div class="header">
     <img src="../assets/head.png" alt="">
-    </div>
+    </div> -->
     <div class="bus-search">
         <div class="head">
             <router-link to="/">
@@ -33,7 +33,7 @@
             </footer>
         </div>
     </div>
-</div>
+<!-- </div> -->
 </template>
 
 <script>
@@ -79,29 +79,29 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/share.scss';
 @import '../assets/media.scss';
-.pc{
-    background-image:url("https://source.unsplash.com/random/1440x800/?bus");
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
-    .header{
-        background: rgba(255, 255, 255, 0.4);
-        text-align: center;
-    }
-    h2{
-        color: $text-color;
-        font-size: $title-font-size;
-        font-weight: bold;
-        display: inline-block;
-    }
-    p{
-        margin: 5px 0;
-    }
-}
+// .pc{
+//     background-image:url("https://source.unsplash.com/random/1440x800/?bus");
+//     min-height: 100vh;
+//     width: 100%;
+//     position: relative;
+//     .header{
+//         background: rgba(255, 255, 255, 0.4);
+//         text-align: center;
+//     }
+//     h2{
+//         color: $text-color;
+//         font-size: $title-font-size;
+//         font-weight: bold;
+//         display: inline-block;
+//     }
+//     p{
+//         margin: 5px 0;
+//     }
+// }
 .bus-search{
     overflow: auto;
-    width: 80%;
-    height: 70%;
+    max-width: 600px;
+    // height: 70%;
     background-color: $bg-color;
     position: absolute;
     margin: auto;
@@ -139,10 +139,13 @@ export default {
     }
 
     footer{
-            position: fixed;
-            bottom: 0;
-            left: 0;
-        }
+        max-width:600px ;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
     .bus-list{
         margin: 20px;
         overflow: auto;

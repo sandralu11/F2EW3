@@ -1,9 +1,11 @@
 <template>
 <div id="map">
-<button class="show-btn" @click="show=!show"  :class="{active:show}"><i class='bx bxs-hide' v-if="show"></i><i class='bx bx-show' v-else></i>{{show?'關閉':'顯示'}}列表</button>
-<van-popup v-model="show" round position="bottom" :style="{ height: '85%'}" :overlay="false">
-        <Card/>
-</van-popup>
+        <button class="show-btn" @click="show=!show"  :class="{active:show}"><i class='bx bxs-hide' v-if="show"></i><i class='bx bx-show' v-else></i>{{show?'關閉':'顯示'}}列表</button>
+        <van-popup v-model="show" round position="bottom" :style="{ height: '85%'}" :overlay="false">
+            <Card/>
+        </van-popup>
+
+
 <!-- 初始化地圖設定 -->
 <l-map
     ref="myMap"

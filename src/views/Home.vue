@@ -44,9 +44,15 @@ export default {
 @import '../assets/share.scss';
 @import '../assets/media.scss';
 .home{
-  background-image:url("https://source.unsplash.com/random/1440x800/?bus");
+  background-image:url("https://source.unsplash.com/random/1440x1000/?bus");
   height: 100vh;
-  width: 100%;
+  max-width:600px ;
+  position: absolute;
+  margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
   .header{
     background: rgba(255, 255, 255, 0.4);
     text-align: center;
