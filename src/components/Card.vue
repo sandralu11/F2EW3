@@ -5,8 +5,8 @@
                 <i class='bx bx-chevron-left'></i>
             </router-link>
             <div class="bus-num">
-                <i class='bx bx-bus' ></i>
-                <span>307</span>
+                <i class='bx bx-bus'></i>
+                <span>{307}</span>
             </div>
         </div>
         <div class="direction">
