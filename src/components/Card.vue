@@ -10,11 +10,11 @@
             </div>
         </div>
         <div class="direction">
-            <div @click="direction=true" :class="{ active: direction}">往捷運石牌站</div>
-            <div @click="direction=false" :class="{ active: !direction}">往舊莊</div>
+            <div @click="direction=true" :class="{ active: direction}" v-if="stopList.length>1">往{{goStop}}</div>
+            <div @click="direction=false" :class="{ active: !direction}" v-if="stopList.length>1">往{{backStop}}</div>
         </div>
         <!-- <div class="time">3秒更新</div> -->
-        <div class="station-list">
+        <div class="station-list"  v-if="stopList.length>1">
             <div v-if="direction">
                 <div class="item" v-for="item in stopList[0].Stops" :key="item.StopUID" >
                     <div>
@@ -54,18 +54,29 @@ export default {
             direction:true,
         }
     },
-
     mounted(){
-    getApi.getSequence().then(res=>{
-        this.stopList=res;
-    }),
-    getApi.getArrival().then(res=>{
-        this.arrival=res;
-    }),
-    getApi.getRoute().then(res=>{
-        this.busList=res;
-    })
+        getApi.getSequence().then(res=>{
+            this.stopList=res;
+        }),
+        getApi.getArrival().then(res=>{
+            this.arrival=res;
+        }),
+        getApi.getRoute().then(res=>{
+            this.busList=res;
+        })
     },
+    computed:{
+        goStop:function(){
+            let length=this.stopList[0].Stops.length
+            let gostop=this.stopList[0].Stops[length-1]
+            return gostop.StopName.Zh_tw
+        },
+        backStop:function(){
+            let length=this.stopList[1].Stops.length
+            let backstop=this.stopList[1].Stops[length-1]
+            return backstop.StopName.Zh_tw
+        }
+    }
 }
 </script>
 
